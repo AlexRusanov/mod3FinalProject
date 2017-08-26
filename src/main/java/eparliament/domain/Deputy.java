@@ -3,6 +3,7 @@ package eparliament.domain;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 /**
@@ -23,7 +24,7 @@ public class Deputy {
     @NotBlank(message = "Обязательное поле")
     private String surname;
 
-    @NotBlank(message = "Обязательное поле")
+    @NotNull(message = "Обязательное поле")
     @Enumerated(EnumType.ORDINAL)
     private Gender gender;
 
@@ -126,4 +127,6 @@ public class Deputy {
     public void setFraction(String fraction) {
         this.fraction = fraction;
     }
+
+    public String printInfo(){return String.format("%s %s %s", name, surname, fraction);}
 }
