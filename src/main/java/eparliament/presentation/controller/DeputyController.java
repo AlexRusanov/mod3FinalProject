@@ -21,7 +21,6 @@ public class DeputyController {
     private DeputyService deputyService;
 
     @Autowired
-
     public DeputyController(DeputyService deputyService) {
         this.deputyService = deputyService;
     }

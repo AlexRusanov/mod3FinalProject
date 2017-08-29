@@ -34,6 +34,9 @@ public class Deputy {
     @NotBlank(message = "Обязательное поле")
     private String fraction;
 
+    public Deputy() {
+    }
+
     public Deputy(String name, String surname, Gender gender, LocalDateTime birthday, String fraction) {
         this.name = name;
         this.surname = surname;
@@ -128,5 +131,5 @@ public class Deputy {
         this.fraction = fraction;
     }
 
-    public String printInfo(){return String.format("%s %s %s", name, surname, fraction);}
+    public String printInfo(){return String.format("%s %s, фракция - %s", name, surname, fraction);}
 }
