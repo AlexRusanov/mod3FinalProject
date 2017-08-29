@@ -1,6 +1,6 @@
 package eparliament.presentation.controller;
 
-import eparliament.service.DeputyService;
+import eparliament.service.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Created by alexandrrusanov on 26/8/17.
+ * Created by alexandrrusanov on 29/8/17.
  */
 @Controller
-@RequestMapping("deputies")
-public class DeputyController {
+@RequestMapping("sessions")
+public class SessionController {
 
     private DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("d-MM-yyyy HH:mm");
 
-    private DeputyService deputyService;
+    private SessionService sessionService;
 
     @Autowired
-    public DeputyController(DeputyService deputyService) {
-        this.deputyService = deputyService;
+    public SessionController(SessionService sessionService) {
+        this.sessionService = sessionService;
     }
 
     @GetMapping
-    public String showDeputies(Model model){
-        model.addAttribute("deputies", deputyService.getAll());
+    public String showSessions(Model model){
+        model.addAttribute("sessions", sessionService.getAll());
         model.addAttribute("dateTimeFormatter", dateTimeFormatter);
 
-        return "deputy/deputy-list";
+        return "session/session-list";
     }
 }

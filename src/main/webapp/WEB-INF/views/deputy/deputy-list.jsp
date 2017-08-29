@@ -47,10 +47,10 @@
 <ul>
     <c:forEach items="${deputies}" var="deputy">
         <jsp:useBean id="deputy" type="eparliament.domain.Deputy"/>
-        <%--<li><c:out value="${product.printInfo()}"/></li>--%>
         <li>
             <p>
-                <a href="<c:url value="deputies/${deputy.id}"/>">${deputy.printInfo()}</a>
+                ${deputy.printInfo()}<br>
+                Дата рождения ${deputy.birthday.format(dateTimeFormatter)}
             </p>
         </li>
     </c:forEach>

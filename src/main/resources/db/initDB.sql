@@ -15,7 +15,6 @@ CREATE TABLE deputies(
 
 CREATE TABLE sessions(
   id     SERIAL PRIMARY KEY,
-  number INTEGER NOT NULL,
   agenda TEXT NOT NULL,
   date   TIMESTAMP WITH TIME ZONE NOT NULL
 );
@@ -25,7 +24,7 @@ CREATE TABLE bills(
   title           TEXT NOT NULL,
   author          TEXT NOT NULL,
   deputy_id       INTEGER,
-  sabmission_date TIMESTAMP WITH TIME ZONE NOT NULL,
+  submission_date TIMESTAMP WITH TIME ZONE NOT NULL,
   text            TEXT NOT NULL,
   session_id      INTEGER,
   FOREIGN KEY (deputy_id) REFERENCES deputies (id) ON DELETE SET NULL,
