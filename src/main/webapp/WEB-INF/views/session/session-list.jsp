@@ -12,12 +12,14 @@
                 <th>№</th>
                 <th>Дата проведения</th>
                 <th>Повестка дня</th>
+                <th>Рассматриваемые законопроекты</th>
             </tr>
             <c:forEach items="${sessions}" var="session" varStatus="loop">
                 <tr>
                     <td>${session.id}</td>
                     <td>${session.date.format(dateTimeFormatter)}</td>
                     <td>${session.agenda}</td>
+                    <td><button>Список законопроектов</button></td>
                 </tr>
             </c:forEach>
         </table>
