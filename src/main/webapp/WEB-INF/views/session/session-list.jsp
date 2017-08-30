@@ -19,7 +19,11 @@
                     <td>${session.id}</td>
                     <td>${session.date.format(dateTimeFormatter)}</td>
                     <td>${session.agenda}</td>
-                    <td><button>Список законопроектов</button></td>
+                    <td>
+                        <a href="<c:url value="/bills/${session.id}/sesionbills"/>">
+                            <button>Список законопроектов</button>
+                        </a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

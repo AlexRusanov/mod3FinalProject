@@ -52,22 +52,22 @@ public class Deputy {
 
         Deputy deputy = (Deputy) o;
 
-        if (!id.equals(deputy.id)) return false;
-        if (!name.equals(deputy.name)) return false;
-        if (!surname.equals(deputy.surname)) return false;
+        if (id != null ? !id.equals(deputy.id) : deputy.id != null) return false;
+        if (name != null ? !name.equals(deputy.name) : deputy.name != null) return false;
+        if (surname != null ? !surname.equals(deputy.surname) : deputy.surname != null) return false;
         if (gender != deputy.gender) return false;
-        if (!birthday.equals(deputy.birthday)) return false;
-        return fraction.equals(deputy.fraction);
+        if (birthday != null ? !birthday.equals(deputy.birthday) : deputy.birthday != null) return false;
+        return fraction != null ? fraction.equals(deputy.fraction) : deputy.fraction == null;
     }
 
     @Override
     public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + surname.hashCode();
-        result = 31 * result + gender.hashCode();
-        result = 31 * result + birthday.hashCode();
-        result = 31 * result + fraction.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+        result = 31 * result + (fraction != null ? fraction.hashCode() : 0);
         return result;
     }
 

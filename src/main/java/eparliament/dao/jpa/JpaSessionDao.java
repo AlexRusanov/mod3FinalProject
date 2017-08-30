@@ -28,6 +28,7 @@ public class JpaSessionDao implements SessionDao {
 
     @Override
     public Optional<Session> getById(int sessionId) {
-        return null;
+        Session session = entityManager.find(Session.class, sessionId);
+        return Optional.ofNullable(session);
     }
 }
