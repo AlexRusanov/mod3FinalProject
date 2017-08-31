@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by alexandrrusanov on 30/8/17.
@@ -30,6 +31,12 @@ public class JpaBillDao implements BillDao{
     }
 
     @Override
+    public Optional<Bill> getById(int billId) {
+        Bill bill = entityManager.find(Bill.class, billId);
+        return Optional.ofNullable(bill);
+    }
+
+    @Override
     public List<Bill> getBySession(int sessionId, int offset, int limit) {
         TypedQuery<Bill> query = this.entityManager.createQuery("SELECT b FROM Bill b WHERE b.session.id = :session_id", Bill.class)
                 .setParameter("session_id", sessionId);
@@ -45,11 +52,13 @@ public class JpaBillDao implements BillDao{
     }
 
     @Override
+    @Transactional
     public Bill save(Bill bill) {
         return null;
     }
 
     @Override
+    @Transactional
     public boolean delete(int billId) {
         return false;
     }

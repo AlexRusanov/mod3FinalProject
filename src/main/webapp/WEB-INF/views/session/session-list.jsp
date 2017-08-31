@@ -20,7 +20,7 @@
                     <td>${session.date.format(dateTimeFormatter)}</td>
                     <td>${session.agenda}</td>
                     <td>
-                        <a href="<c:url value="/bills/${session.id}/sesionbills"/>">
+                        <a href="<c:url value="/bills/${session.id}/sessionbills"/>">
                             <button>Список законопроектов</button>
                         </a>
                     </td>

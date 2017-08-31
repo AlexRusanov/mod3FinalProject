@@ -11,6 +11,8 @@ public interface BillService {
 
     int getCount();
 
+    Bill getById(int billId);
+
     List<Bill> getBySession(int sessionId, int offset, int limit);
 
     List<Bill> getByDeputy(int deputyId);

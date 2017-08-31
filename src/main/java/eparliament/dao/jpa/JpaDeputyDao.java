@@ -32,11 +32,13 @@ public class JpaDeputyDao implements DeputyDao{
     }
 
     @Override
+    @Transactional
     public Deputy save(Deputy deputy) {
         return null;
     }
 
     @Override
+    @Transactional
     public boolean delete(int deputyId) {
         return false;
     }

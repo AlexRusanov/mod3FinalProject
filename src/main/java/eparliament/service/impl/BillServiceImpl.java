@@ -3,6 +3,7 @@ package eparliament.service.impl;
 import eparliament.dao.BillDao;
 import eparliament.domain.Bill;
 import eparliament.service.BillService;
+import eparliament.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,12 @@ public class BillServiceImpl implements BillService {
     @Override
     public int getCount() {
         return billDao.getCount();
+    }
+
+    @Override
+    public Bill getById(int billId) {
+        return billDao.getById(billId).
+                orElseThrow(() -> new NotFoundException(String.format("Законопроект с id=%d не найден", billId)));
     }
 
     @Override
