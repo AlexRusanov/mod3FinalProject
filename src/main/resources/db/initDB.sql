@@ -27,8 +27,8 @@ CREATE TABLE bills(
   submission_date TIMESTAMP WITH TIME ZONE NOT NULL,
   text            TEXT NOT NULL,
   session_id      INTEGER,
-  FOREIGN KEY (deputy_id) REFERENCES deputies (id) ON DELETE SET NULL,
-  FOREIGN KEY (session_id) REFERENCES sessions (id) ON DELETE SET NULL
+  FOREIGN KEY (deputy_id) REFERENCES deputies (id) ON DELETE CASCADE,
+  FOREIGN KEY (session_id) REFERENCES sessions (id) ON DELETE CASCADE
 );
 
 CREATE TABLE users (
@@ -37,7 +37,7 @@ CREATE TABLE users (
   password    TEXT NOT NULL,
   deputy_id   INTEGER,
   role        INTEGER NOT NULL,
-  FOREIGN KEY (deputy_id) REFERENCES deputies (id) ON DELETE SET NULL
+  FOREIGN KEY (deputy_id) REFERENCES deputies (id) ON DELETE CASCADE
 );
 
 CREATE TABLE voting(
