@@ -5,6 +5,7 @@
     <title>EParliament | Список сессий</title>
 </head>
 <body>
+<jsp:include page="../components/header.jsp"/>
     <h1>Список сессий текущего созыва</h1>
     <ul>
         <table border="1" cellpadding="5">
@@ -28,8 +29,5 @@
             </c:forEach>
         </table>
     </ul>
-    <a href="<c:url value="/"/> ">
-        <button>На главную</button>
-    </a>
 </body>
 </html>

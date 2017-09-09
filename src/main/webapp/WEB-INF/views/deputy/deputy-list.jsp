@@ -6,7 +6,7 @@
     <title>EParliament | Список депутатов текущего созыва</title>
 </head>
 <body>
-<%--<jsp:include page="../components/header.jsp"/>--%>
+<jsp:include page="../components/header.jsp"/>
 <h1>Список депутатов текущего созыва</h1>
 <%--<form>--%>
     <%--<p>--%>
@@ -73,8 +73,5 @@
         <%--</c:forEach>--%>
     <%--</p>--%>
 </ul>
-<a href="<c:url value="/"/> ">
-    <button>На главную</button>
-</a>
 </body>
 </html>

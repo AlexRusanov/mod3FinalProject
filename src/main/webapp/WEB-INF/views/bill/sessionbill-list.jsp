@@ -5,6 +5,7 @@
     <title>EParliament | Список законопроектов, вынесенных на сессию №${session.id}</title>
 </head>
 <body>
+<jsp:include page="../components/header.jsp"/>
     <h1>Список законопроектов к рассмотрению</h1>
     <c:choose>
         <c:when test="${sessionbills.size() == 0}">

@@ -5,6 +5,7 @@
     <title>EParliament | Законопроект: ${bill.title} </title>
 </head>
 <body>
+<jsp:include page="../components/header.jsp"/>
     <h1>Законопроект: ${bill.title}</h1>
     <div>
         Дата внесения законопроекта: ${bill.submissionDate.format(dateTimeFormatter)}<br>

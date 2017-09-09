@@ -5,6 +5,7 @@
     <title>EParliament | Главная</title>
 </head>
 <body>
+<jsp:include page="components/header.jsp"/>
     <h1>Официальный веб-портал Нашего Парламента</h1>
     <ul>
         <li><a href="<c:url value="/deputies"/>">Список депутатов текущего созыва</a></li>
