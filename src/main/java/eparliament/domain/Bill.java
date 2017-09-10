@@ -1,8 +1,13 @@
 package eparliament.domain;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 /**
@@ -23,9 +28,9 @@ public class Bill {
     @NotBlank(message = "Обязательное поле")
     private String author;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "deputy_id")
-    private Deputy deputy;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     private LocalDateTime submission_date;
 
@@ -39,17 +44,17 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(String title, String author, Deputy deputy, LocalDateTime submission_date, String text, Session session) {
+    public Bill(String title, String author, User user, LocalDateTime submission_date, String text, Session session) {
         this.title = title;
         this.author = author;
-        this.deputy = deputy;
+        this.user = user;
         this.submission_date = submission_date;
         this.text = text;
         this.session = session;
     }
 
-    public Bill(Deputy deputy) {
-        this.deputy = deputy;
+    public Bill(User user) {
+        this.user = user;
     }
 
     public Bill(Session session) {
@@ -116,12 +121,12 @@ public class Bill {
         this.author = author;
     }
 
-    public Deputy getDeputy() {
-        return deputy;
+    public User getUser() {
+        return user;
     }
 
-    public void setDeputy(Deputy deputy) {
-        this.deputy = deputy;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public LocalDateTime getSubmissionDate() {

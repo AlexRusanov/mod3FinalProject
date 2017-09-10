@@ -5,19 +5,19 @@
 
 <div style="background: ghostwhite">
     <a href="<c:url value="/"/> ">
-        Главная
+        <button>Главная</button>
     </a>
 
     <sec:authorize access="isAuthenticated()">
         <form:form servletRelativeAction="/logout" cssStyle="float: right">
             <button>Выйти</button>
         </form:form>
-        <%--<sec:authorize url="/admin/products">--%>
-            <%--<a href="<c:url value="/admin/products"/>" style="float: right">--%>
-                <%--<button>Админпанель</button>--%>
-            <%--</a>--%>
-        <%--</sec:authorize>--%>
-        <b style="float: right">Добро пожаловать, ${loggedUser.name} </b>
+        <sec:authorize url="/myBills">
+            <a href="<c:url value="/myBills"/>">
+                <button>Мои законопроекты</button>
+            </a>
+        </sec:authorize>
+        <b style="float: right">Добро пожаловать, ${loggedUser.deputy.surname} ${loggedUser.deputy.name} </b>
     </sec:authorize>
     <sec:authorize access="isAnonymous()">
         <a href="<c:url value="/login"/>" style="float: right">
@@ -27,5 +27,4 @@
             <button>Зарегистрироваться</button>
         </a>
     </sec:authorize>
-
 </div>

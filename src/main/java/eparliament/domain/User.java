@@ -24,7 +24,7 @@ public class User {
     @NotBlank(message = "Обязательное поле")
     private String password;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "deputy_id")
     private Deputy deputy;
 

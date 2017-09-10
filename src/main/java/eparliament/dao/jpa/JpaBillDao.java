@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.math.BigDecimal;
 import java.util.List;
@@ -47,19 +48,29 @@ public class JpaBillDao implements BillDao{
     }
 
     @Override
-    public List<Bill> getByDeputy(int deputyId) {
-        return null;
+    public List<Bill> getAllByUser(int userId) {
+        return entityManager.createQuery("SELECT b FROM Bill b WHERE b.user.id = :userId", Bill.class)
+                .setParameter("userId", userId)
+                .getResultList();
     }
 
     @Override
     @Transactional
     public Bill save(Bill bill) {
-        return null;
+        if (bill.getId() == null) {
+            entityManager.persist(bill);
+            return bill;
+        } else {
+            return entityManager.merge(bill);
+        }
     }
 
     @Override
     @Transactional
     public boolean delete(int billId) {
-        return false;
+        Query query = entityManager.createQuery("DELETE FROM Bill b WHERE b.id = :bill_id");
+        query.setParameter("bill_id", billId);
+
+        return query.executeUpdate() != 0;
     }
 }

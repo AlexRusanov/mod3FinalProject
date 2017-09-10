@@ -8,15 +8,15 @@
     <http>
         <!--<intercept-url pattern="/login" access="isAnonymous()"/>-->
         <!--<intercept-url pattern="/register" access="isAnonymous()"/>-->
-        <intercept-url pattern="/orders" access="isAuthenticated()"/>
-        <intercept-url pattern="/admin/**" access="hasAuthority('ADMIN')"/>
+        <intercept-url pattern="/myBills/**" access="isAuthenticated()"/>
+        <!--<intercept-url pattern="/admin/**" access="hasAuthority('ADMIN')"/>-->
 
         <intercept-url pattern="/**" access="permitAll()"/>
         <!--post метод по ссылке login-->
         <form-login login-page="/login" default-target-url="/"
                     authentication-failure-url="/login?error=true"/>
         <logout logout-success-url="/login?logout=true"/>
-        <!--<csrf disabled="true"/>-->
+        <csrf disabled="true"/>
     </http>
 
     <beans:bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder" />

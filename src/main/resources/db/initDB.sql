@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS voting;
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS bills;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS sessions;
 DROP TABLE IF EXISTS deputies;
 
@@ -15,20 +15,8 @@ CREATE TABLE deputies(
 
 CREATE TABLE sessions(
   id     SERIAL PRIMARY KEY,
-  agenda TEXT NOT NULL,
-  date   TIMESTAMP WITH TIME ZONE NOT NULL
-);
-
-CREATE TABLE bills(
-  id              SERIAL PRIMARY KEY,
-  title           TEXT NOT NULL,
-  author          TEXT NOT NULL,
-  deputy_id       INTEGER,
-  submission_date TIMESTAMP WITH TIME ZONE NOT NULL,
-  text            TEXT NOT NULL,
-  session_id      INTEGER,
-  FOREIGN KEY (deputy_id) REFERENCES deputies (id) ON DELETE CASCADE,
-  FOREIGN KEY (session_id) REFERENCES sessions (id) ON DELETE CASCADE
+  agenda TEXT,
+  date   TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TABLE users (
@@ -38,6 +26,18 @@ CREATE TABLE users (
   deputy_id   INTEGER,
   role        INTEGER NOT NULL,
   FOREIGN KEY (deputy_id) REFERENCES deputies (id) ON DELETE CASCADE
+);
+
+CREATE TABLE bills(
+  id              SERIAL PRIMARY KEY,
+  title           TEXT NOT NULL,
+  author          TEXT NOT NULL,
+  user_id         INTEGER,
+  submission_date TIMESTAMP WITH TIME ZONE NOT NULL,
+  text            TEXT NOT NULL,
+  session_id      INTEGER,
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+  FOREIGN KEY (session_id) REFERENCES sessions (id) ON DELETE CASCADE
 );
 
 CREATE TABLE voting(

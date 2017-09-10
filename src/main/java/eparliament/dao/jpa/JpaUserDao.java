@@ -21,6 +21,7 @@ public class JpaUserDao implements UserDao {
     private EntityManager entityManager;
 
     @Override
+    @Transactional
     public User save(User user) {
         if (user.getId() == null) {
             entityManager.persist(user);

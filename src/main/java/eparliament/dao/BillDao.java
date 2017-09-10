@@ -17,7 +17,7 @@ public interface BillDao {
 
     List<Bill> getBySession(int sessionId, int offset, int limit);
 
-    List<Bill> getByDeputy(int deputyId);
+    List<Bill> getAllByUser(int userId);
 
     Bill save(Bill bill);
 
