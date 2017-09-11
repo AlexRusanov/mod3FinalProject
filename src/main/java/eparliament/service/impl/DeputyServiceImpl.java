@@ -29,12 +29,12 @@ public class DeputyServiceImpl implements DeputyService {
     }
 
     @Override
-    public List<Deputy> getAll(String surname, DeputySort deputySort) {
+    public List<Deputy> getAll(String fraction, DeputySort deputySort) {
         List<Deputy> result = new ArrayList<>();
         switch (deputySort) {
             case SURNAME_ASC:
             case SURNAME_DESC:
-                result = this.deputyDao.getAllSortedBySurname(surname, deputySort == DeputySort.SURNAME_DESC);
+                result = this.deputyDao.getAllSortedByFraction(fraction, deputySort == DeputySort.SURNAME_DESC);
                 break;
         }
         return result;

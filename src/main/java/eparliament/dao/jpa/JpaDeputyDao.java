@@ -30,12 +30,12 @@ public class JpaDeputyDao implements DeputyDao{
     }
 
     @Override
-    public List<Deputy> getAllSortedBySurname(String surname, boolean desc) {
+    public List<Deputy> getAllSortedByFraction(String fraction, boolean desc) {
         TypedQuery<Deputy> query = this.entityManager.createQuery("SELECT d FROM Deputy d " +
-                "WHERE d.surname LIKE :surname " +
+                "WHERE d.fraction LIKE :fraction " +
                 "ORDER BY d.surname " + (desc ? "DESC " : "ASC "), Deputy.class);
 
-        query.setParameter("surname", StringUtils.isEmpty(surname) ? "%" : "%" + surname + "%");
+        query.setParameter("fraction", StringUtils.isEmpty(fraction) ? "%" : "%" + fraction + "%");
 
         return query.getResultList();
     }

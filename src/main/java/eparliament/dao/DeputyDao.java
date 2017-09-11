@@ -12,7 +12,7 @@ public interface DeputyDao {
 
     List<Deputy> getAll();
 
-    List<Deputy> getAllSortedBySurname(String surname, boolean desc);
+    List<Deputy> getAllSortedByFraction(String fraction, boolean desc);
 
     Optional<Deputy> getById(int deputyId);
 

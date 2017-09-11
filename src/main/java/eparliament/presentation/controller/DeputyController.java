@@ -29,10 +29,10 @@ public class DeputyController {
 
     @GetMapping
     public String showDeputies(Model model,
-                               @RequestParam(value = "surname", required = false) String surname,
+                               @RequestParam(value = "fraction", required = false) String fraction,
                                @RequestParam(value = "sort", required = false) DeputySort sort){
         if (sort == null) sort = DeputySort.SURNAME_ASC;
-        model.addAttribute("deputies", deputyService.getAll(surname, sort));
+        model.addAttribute("deputies", deputyService.getAll(fraction, sort));
         model.addAttribute("dateTimeFormatter", dateTimeFormatter);
 
         return "deputy/deputy-list";

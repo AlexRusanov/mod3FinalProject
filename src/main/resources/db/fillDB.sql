@@ -10,15 +10,15 @@ DELETE FROM deputies;
 ALTER SEQUENCE deputies_id_seq RESTART WITH 1;
 
 INSERT INTO deputies (name, surname, gender, birthday, fraction)
-VALUES ('Петя', 'Шоколадный', 1, '1956-12-28 00:00:00', 'Кондитерская');
+VALUES ('Петя', 'Шоколадный', 1, '1956-12-28 00:00:00', 'SweetShop');
 INSERT INTO deputies (name, surname, gender, birthday, fraction)
-VALUES ('Юра', 'Закон', 1, '1958-05-13 00:00:00', 'Кондитерская');
+VALUES ('Юра', 'Закон', 1, '1958-05-13 00:00:00', 'SweetShop');
 INSERT INTO deputies (name, surname, gender, birthday, fraction)
-VALUES ('Олег', 'Радикальный', 1, '1970-06-03 00:00:00', 'Вилы на изготовку');
+VALUES ('Олег', 'Радикальный', 1, '1970-06-03 00:00:00', 'Pitchfork');
 INSERT INTO deputies (name, surname, gender, birthday, fraction)
-VALUES ('Юля', 'Роботяща', 0, '1969-08-23 00:00:00', 'Сердешные');
+VALUES ('Юля', 'Роботяща', 0, '1969-08-23 00:00:00', 'Hearts');
 INSERT INTO deputies (name, surname, gender, birthday, fraction)
-VALUES ('Саша', 'Пастор', 1, '1964-10-15 00:00:00', 'Сердешные');
+VALUES ('Саша', 'Пастор', 1, '1964-10-15 00:00:00', 'Hearts');
 
 INSERT INTO sessions (agenda, date)
 VALUES ('Повестка дня 1-ой сессии', '2017-09-01 10:00:00');

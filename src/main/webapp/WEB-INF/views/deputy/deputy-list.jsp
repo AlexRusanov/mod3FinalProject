@@ -1,4 +1,4 @@
-<%@ page import="eparliament.dto.DeputySort" %><%--<%@ page import="edu.bionic.dto.ProductSort" %>--%>
+<%@ page import="eparliament.dto.DeputySort" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -9,6 +9,10 @@
 <jsp:include page="../components/header.jsp"/>
 <h1>Список депутатов текущего созыва</h1>
 <form>
+    <p>
+        <label for="fraction">Название фракции</label>
+        <input type="text" id="fraction" name="fraction" value="${param.fraction}"/>
+    </p>
     <p>
         <label for="sort">Сортировка</label>
         <select id="sort" name="sort">

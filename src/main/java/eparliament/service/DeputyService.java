@@ -12,7 +12,7 @@ public interface DeputyService {
 
     List<Deputy> getAll();
 
-    List<Deputy> getAll(String surname, DeputySort deputySort);
+    List<Deputy> getAll(String fraction, DeputySort deputySort);
 
     Deputy getById(int deputyId);
 

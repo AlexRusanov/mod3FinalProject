@@ -22,7 +22,7 @@ public class DeputyDaoMock implements DeputyDao {
     }
 
     @Override
-    public List<Deputy> getAllSortedBySurname(String surname, boolean desc) {
+    public List<Deputy> getAllSortedByFraction(String fraction, boolean desc) {
         return null;
     }
 
