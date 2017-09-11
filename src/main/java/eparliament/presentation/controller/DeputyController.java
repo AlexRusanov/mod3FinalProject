@@ -1,11 +1,13 @@
 package eparliament.presentation.controller;
 
+import eparliament.dto.DeputySort;
 import eparliament.service.DeputyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.format.DateTimeFormatter;
 
@@ -26,8 +28,11 @@ public class DeputyController {
     }
 
     @GetMapping
-    public String showDeputies(Model model){
-        model.addAttribute("deputies", deputyService.getAll());
+    public String showDeputies(Model model,
+                               @RequestParam(value = "surname", required = false) String surname,
+                               @RequestParam(value = "sort", required = false) DeputySort sort){
+        if (sort == null) sort = DeputySort.SURNAME_ASC;
+        model.addAttribute("deputies", deputyService.getAll(surname, sort));
         model.addAttribute("dateTimeFormatter", dateTimeFormatter);
 
         return "deputy/deputy-list";

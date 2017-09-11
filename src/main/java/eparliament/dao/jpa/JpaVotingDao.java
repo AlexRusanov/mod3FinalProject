@@ -29,6 +29,11 @@ public class JpaVotingDao implements VotingDao {
     @Override
     @Transactional
     public Voting save(Voting voting) {
-        return null;
+        if (voting.getId() == null) {
+            entityManager.persist(voting);
+            return voting;
+        } else {
+            return entityManager.merge(voting);
+        }
     }
 }

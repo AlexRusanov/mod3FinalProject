@@ -22,6 +22,11 @@ public class DeputyDaoMock implements DeputyDao {
     }
 
     @Override
+    public List<Deputy> getAllSortedBySurname(String surname, boolean desc) {
+        return null;
+    }
+
+    @Override
     public Optional<Deputy> getById(int deputyId) {
         return null;
     }

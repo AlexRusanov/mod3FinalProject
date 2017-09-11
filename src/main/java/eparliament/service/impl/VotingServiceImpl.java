@@ -28,6 +28,6 @@ public class VotingServiceImpl implements VotingService {
 
     @Override
     public void createNew(Voting voting) {
-
+        votingDao.save(voting);
     }
 }

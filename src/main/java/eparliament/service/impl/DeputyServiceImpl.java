@@ -2,10 +2,12 @@ package eparliament.service.impl;
 
 import eparliament.dao.DeputyDao;
 import eparliament.domain.Deputy;
+import eparliament.dto.DeputySort;
 import eparliament.service.DeputyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +26,18 @@ public class DeputyServiceImpl implements DeputyService {
     @Override
     public List<Deputy> getAll() {
         return deputyDao.getAll();
+    }
+
+    @Override
+    public List<Deputy> getAll(String surname, DeputySort deputySort) {
+        List<Deputy> result = new ArrayList<>();
+        switch (deputySort) {
+            case SURNAME_ASC:
+            case SURNAME_DESC:
+                result = this.deputyDao.getAllSortedBySurname(surname, deputySort == DeputySort.SURNAME_DESC);
+                break;
+        }
+        return result;
     }
 
     @Override

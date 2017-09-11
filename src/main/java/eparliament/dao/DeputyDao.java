@@ -12,6 +12,8 @@ public interface DeputyDao {
 
     List<Deputy> getAll();
 
+    List<Deputy> getAllSortedBySurname(String surname, boolean desc);
+
     Optional<Deputy> getById(int deputyId);
 
     Deputy save(Deputy deputy);

@@ -1,6 +1,7 @@
 package eparliament.service;
 
 import eparliament.domain.Deputy;
+import eparliament.dto.DeputySort;
 
 import java.util.List;
 
@@ -10,6 +11,8 @@ import java.util.List;
 public interface DeputyService {
 
     List<Deputy> getAll();
+
+    List<Deputy> getAll(String surname, DeputySort deputySort);
 
     Deputy getById(int deputyId);
 

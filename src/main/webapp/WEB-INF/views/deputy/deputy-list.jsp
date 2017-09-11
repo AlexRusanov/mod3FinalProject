@@ -1,4 +1,4 @@
-<%--<%@ page import="edu.bionic.dto.ProductSort" %>--%>
+<%@ page import="eparliament.dto.DeputySort" %><%--<%@ page import="edu.bionic.dto.ProductSort" %>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -8,42 +8,22 @@
 <body>
 <jsp:include page="../components/header.jsp"/>
 <h1>Список депутатов текущего созыва</h1>
-<%--<form>--%>
-    <%--<p>--%>
-        <%--<label for="name">Имя товара</label>--%>
-        <%--<input type="text" id="name" name="name" value="${param.name}"/>--%>
-    <%--</p>--%>
-    <%--<p>--%>
-        <%--Цена:--%>
-        <%--<label for="min">мин</label>--%>
-        <%--<input type="text" id="min" name="min" value="${param.min}"/>--%>
-        <%--<label for="max">макс</label>--%>
-        <%--<input type="text" id="max" name="max" value="${param.max}"/>--%>
-
-    <%--</p>--%>
-    <%--<p>--%>
-        <%--<label for="sort">Сортировка</label>--%>
-        <%--<select id="sort" name="sort">--%>
-            <%--<option value="<%= ProductSort.NAME_ASC.name() %>"--%>
-                    <%--<%= ProductSort.NAME_ASC.name().equals(request.getParameter("sort")) ? "selected" : "" %>>По--%>
-                <%--алфавиту А-Я--%>
-            <%--</option>--%>
-            <%--<option value="<%= ProductSort.NAME_DESC.name() %>"--%>
-                    <%--<%= ProductSort.NAME_DESC.name().equals(request.getParameter("sort")) ? "selected" : "" %>>По--%>
-                <%--алфавиту Я-А--%>
-            <%--</option>--%>
-            <%--<option value="<%= ProductSort.PRICE_ASC.name() %>"--%>
-                    <%--<%= ProductSort.PRICE_ASC.name().equals(request.getParameter("sort")) ? "selected" : "" %>>От--%>
-                <%--дешевых к дорогим--%>
-            <%--</option>--%>
-            <%--<option value="<%= ProductSort.PRICE_DESC.name() %>"--%>
-                    <%--<%= ProductSort.PRICE_DESC.name().equals(request.getParameter("sort")) ? "selected" : "" %>>От--%>
-                <%--дорогих к дешевым--%>
-            <%--</option>--%>
-        <%--</select>--%>
-    <%--</p>--%>
-    <%--<button type="submit">Поиск</button>--%>
-<%--</form>--%>
+<form>
+    <p>
+        <label for="sort">Сортировка</label>
+        <select id="sort" name="sort">
+            <option value="<%= DeputySort.SURNAME_ASC.name() %>"
+                    <%= DeputySort.SURNAME_ASC.name().equals(request.getParameter("sort")) ? "selected" : "" %>>По
+                алфавиту А-Я
+            </option>
+            <option value="<%= DeputySort.SURNAME_DESC.name() %>"
+                    <%= DeputySort.SURNAME_DESC.name().equals(request.getParameter("sort")) ? "selected" : "" %>>По
+                алфавиту Я-А
+            </option>
+        </select>
+    </p>
+    <button type="submit">Сортировать</button>
+</form>
 <ul>
     <c:forEach items="${deputies}" var="deputy">
         <jsp:useBean id="deputy" type="eparliament.domain.Deputy"/>

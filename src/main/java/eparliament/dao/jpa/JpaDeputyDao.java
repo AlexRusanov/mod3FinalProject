@@ -4,9 +4,12 @@ import eparliament.dao.DeputyDao;
 import eparliament.domain.Deputy;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +27,17 @@ public class JpaDeputyDao implements DeputyDao{
     public List<Deputy> getAll() {
         return entityManager.createQuery("SELECT d FROM Deputy d", Deputy.class)
                 .getResultList();
+    }
+
+    @Override
+    public List<Deputy> getAllSortedBySurname(String surname, boolean desc) {
+        TypedQuery<Deputy> query = this.entityManager.createQuery("SELECT d FROM Deputy d " +
+                "WHERE d.surname LIKE :surname " +
+                "ORDER BY d.surname " + (desc ? "DESC " : "ASC "), Deputy.class);
+
+        query.setParameter("surname", StringUtils.isEmpty(surname) ? "%" : "%" + surname + "%");
+
+        return query.getResultList();
     }
 
     @Override
